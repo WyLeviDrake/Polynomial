@@ -1,5 +1,7 @@
 public class PolynomialList {
 
+    Node head;
+
     class Node implements Cloneable {
 
         private double coefficient;
@@ -17,7 +19,7 @@ public class PolynomialList {
             link = null;
         }
         public Node(Node input) {
-            coefficient = input.getCoefficient;
+            coefficient = input.getCoefficient();
             degree = 0;
             link = null;
         }
@@ -38,28 +40,27 @@ public class PolynomialList {
         public void assignCoefficient(double newCoefficient) {
             coefficient = newCoefficient;
         }
+    }
 
-        public void reserve(int degree) {
-            if else
-                if else
-                    if else
-                        if else
-                            if else
-                                if else
-                                    if else if () {
-                
-            }
-        }
+    public PolynomialList() {
+        head = null;
     }
 
     public void removeNode() {
-        link = link.getLink();
+        Node cursor = head;
+        cursor.link = cursor.link.getLink();
     }
-    public double evaluate(PolynomialList target, double x){
-        double answer;
-        for (PolynomialList i = target, i.link != null, i.link = i.getLink()) {
-            answer = answer + (coefficient * Math.pow(x, degree));
+    public double evaluate(Node target, double x){
+        double answer = 0;
+        while (target.getLink() != null) {
+            answer = answer + (target.coefficient * Math.pow(x, target.degree));
+            target.link = target.getLink();
         }
+        return answer;
+//        for (Node i = target; i.getLink() != null; i.link = i.getLink()) {
+//            answer = answer + (target.coefficient * Math.pow(x, target.degree));
+//        }
+
 
     }
 }
