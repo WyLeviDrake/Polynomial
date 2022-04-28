@@ -63,8 +63,16 @@ public class PolynomialList {
             }
         }
     }
-    public void removeNode(int degree) {
-        this.link = cursor.link.getLink();
+    public void removeNode(int inputDegree) {
+        Node cursor = new Node(head);
+        while (inputDegree > cursor.link.link.degree) {
+            cursor.link = cursor.link.link;
+        }
+        if (inputDegree == cursor.link.link.degree) {
+            cursor.link.link = cursor.link.link.link;
+        } else {
+            throw new IllegalArgumentException("There is no Node with that exponent or degree.");
+        }
     }
     public double evaluate(Node target, double x){
         double answer = 0;
