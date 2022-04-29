@@ -18,6 +18,7 @@ public class PolynomialList {
             degree = inputDegree;
             link = inputLink;
         }
+        // Constructor to more easily make a cursor
         public Node(Node input) {
             coefficient = 0;
             degree = 0;
@@ -32,13 +33,6 @@ public class PolynomialList {
         }
         public Node getLink() {
             return link;
-        }
-
-        public void addToCoefficient(double amount) {
-            coefficient = coefficient + amount;
-        }
-        public void assignCoefficient(double newCoefficient) {
-            coefficient = newCoefficient;
         }
     }
 
@@ -81,6 +75,7 @@ public class PolynomialList {
             target.link = target.getLink();
         }
         return answer;
+        // for loop also works but the while loop was simpler so I went with that instead.
 //        for (Node i = target; i.getLink() != null; i.link = i.getLink()) {
 //            answer = answer + (target.coefficient * Math.pow(x, target.degree));
 //        }
