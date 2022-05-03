@@ -8,11 +8,6 @@ public class PolynomialList {
         private int degree;
         private Node link;
 
-        public Node() {
-            coefficient = 0;
-            degree = 0;
-            link = null;
-        }
         public Node(double inputCoefficient, int inputDegree, Node inputLink) {
             coefficient = inputCoefficient;
             degree = inputDegree;
@@ -45,19 +40,19 @@ public class PolynomialList {
     }
 
     public void addNode(double inputCoefficient, int inputDegree) {
-        if (inputDegree > head.degree) {
-            head = new Node(inputCoefficient, inputDegree, head);
-        } else if (head.link == null) {
+        if (head == null) {
             head = new Node(inputCoefficient, inputDegree, null);
+        } else if (inputDegree > head.degree) {
+            head = new Node(inputCoefficient, inputDegree, head);
         } else if (inputDegree <= head.degree) {
             Node cursor = new Node(head);
-            while (inputDegree < cursor.link.link.degree) {
+            while (inputDegree < cursor.link.link.degree && cursor.link.link != null) {
                 cursor.link = cursor.link.link;
             }
             if (inputDegree == cursor.link.degree) {
                 cursor.link.coefficient = cursor.link.coefficient + inputCoefficient;
             } else {
-                cursor.link = new Node(inputCoefficient, inputDegree, cursor.link);
+                cursor.link.link = new Node(inputCoefficient, inputDegree, cursor.link.link);
             }
         }
     }
