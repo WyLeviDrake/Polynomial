@@ -40,10 +40,14 @@ public class PolynomialList {
         head = null;
     }
 
+    public Node getHead() {
+        return head;
+    }
+
     public void addNode(double inputCoefficient, int inputDegree) {
         if (inputDegree > head.degree) {
             head = new Node(inputCoefficient, inputDegree, head);
-        } else if (head == null) {
+        } else if (head.link == null) {
             head = new Node(inputCoefficient, inputDegree, null);
         } else if (inputDegree <= head.degree) {
             Node cursor = new Node(head);
