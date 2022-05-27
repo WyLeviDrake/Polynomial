@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="21b92f75-3f58-4fe8-a396-127920040995" name="Changes" comment="Started unit testing.">
+    <list default="true" id="21b92f75-3f58-4fe8-a396-127920040995" name="Changes" comment="Refactored addNode">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PolynomialList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PolynomialList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/PolynomialListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/PolynomialListTest.java" afterDir="false" />
@@ -117,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651548484163</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Continued testing. Removed unused constructor, fixed some errors.">
+      <created>1651617145837</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1651617145837</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -138,9 +145,27 @@
     <MESSAGE value="Completed removeNode method" />
     <MESSAGE value="Removed some unfinished methods that are redundant." />
     <MESSAGE value="Started unit testing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Started unit testing." />
+    <MESSAGE value="Continued testing. Removed unused constructor, fixed some errors." />
+    <MESSAGE value="Refactored addNode." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored addNode." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PolynomialList.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PolynomialList.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/polynomial$PolynomialListTest.ic" NAME="PolynomialListTest Coverage Results" MODIFIED="1651616883340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/polynomial$PolynomialListTest.ic" NAME="PolynomialListTest Coverage Results" MODIFIED="1653447983434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

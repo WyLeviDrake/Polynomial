@@ -41,8 +41,12 @@ public class PolynomialListTest {
         test.addNode(1,1);
         assertEquals(2, test.getHead().getCoefficient());
     }
-
     @Test
-    public void removeNode_removes
-
+    public void removeNode_removesCorrectNode_givenNodeExists() {
+        PolynomialList test = new PolynomialList();
+        test.addNode(1, 1);
+        test.addNode(2, 2);
+        test.removeNode(2);
+        assertEquals (1, test.getHead().getDegree());
+    }
 }
