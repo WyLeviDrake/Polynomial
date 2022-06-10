@@ -19,11 +19,12 @@ public class PolynomialListTest {
             fail("Method should account for head being set to null.");
         }
     }
+
     @Test
     public void addNode_addsANodeAtHeadReference_givenNextNodeHasALowerDegree() {
         PolynomialList test = new PolynomialList();
-        test.addNode(1,1);
-        test.addNode(1,2);
+        test.addNode(1, 1);
+        test.addNode(2, 2);
         assertEquals(2, test.getHead().getDegree());
     }
     @Test
@@ -39,14 +40,17 @@ public class PolynomialListTest {
         PolynomialList test = new PolynomialList();
         test.addNode(1, 1);
         test.addNode(1,1);
-        assertEquals(2, test.getHead().getCoefficient());
+        assertEquals(2.0, test.getHead().getCoefficient());
     }
     @Test
     public void removeNode_removesCorrectNode_givenNodeExists() {
         PolynomialList test = new PolynomialList();
         test.addNode(1, 1);
         test.addNode(2, 2);
+        test.addNode(3, 3);
         test.removeNode(2);
+        test.resetCursor();
+        test.advanceCursor();
         assertEquals (1, test.getHead().getDegree());
     }
 }
