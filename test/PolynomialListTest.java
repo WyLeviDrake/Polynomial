@@ -51,6 +51,6 @@ public class PolynomialListTest {
         test.removeNode(2);
         test.resetCursor();
         test.advanceCursor();
-        assertEquals (1, test.getHead().getDegree());
+        assertEquals (1, test.getHead().getLink().getDegree());
     }
 }

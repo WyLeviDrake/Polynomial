@@ -60,7 +60,9 @@ public class PolynomialList {
         head = start;
     }
     private void findDegreeHome(int degree) {
-        if (isNotEndOfList() && isDegreeLessThanCurrent(degree)) {
+        if (isStartOfList() && isDegreeEqual(degree)) {
+            return;
+        } else if (isNotEndOfList() && isDegreeLessThanCurrent(degree)) {
             findDegreeFromCurrentCursor(degree);
         } else {
             findDegreeFromStart(degree);
@@ -74,6 +76,24 @@ public class PolynomialList {
     private void findDegreeFromStart(int degree) {
         resetCursor();
         while (isNotEndOfList() && isDegreeLessThanCurrent(degree)) {
+            advanceCursor();
+        }
+    }
+    private void findDegreeBeforeHome(int degree) {
+        if (isNotEndOfList() && isDegreeEqualToNext(degree)) {
+            findDegreeBeforeHomeFromCurrentCursor(degree);
+        } else {
+            findDegreeBeforeHomeFromStart(degree);
+        }
+    }
+    private void findDegreeBeforeHomeFromCurrentCursor(int degree) {
+        while (isNotEndOfList() && !isDegreeEqualToNext(degree)) {
+            advanceCursor();
+        }
+    }
+    private void findDegreeBeforeHomeFromStart(int degree) {
+        resetCursor();
+        while (isNotEndOfList() && !isDegreeEqualToNext(degree)) {
             advanceCursor();
         }
     }
@@ -100,6 +120,13 @@ public class PolynomialList {
             return degree == cursor.degree;
         }
     }
+    private boolean isDegreeEqualToNext(int degree) {
+        if (isCursorNull()) {
+            return false;
+        } else {
+            return degree == cursor.link.degree;
+        }
+    }
     private boolean isCursorNull() {
         return cursor == null;
     }
@@ -113,11 +140,9 @@ public class PolynomialList {
         cursor = head;
     }
 
-    public void removeNode(int inputDegree) {
-        while (cursor.link != null && inputDegree > cursor.link.degree) {
-            cursor = cursor.link;
-        }
-        if (cursor.link != null && inputDegree == cursor.link.degree) {
+    public void removeNode(int degree) {
+        findDegreeBeforeHome(degree);
+        if (isNotEndOfList() && isDegreeEqualToNext(degree)) {
             cursor.link = cursor.link.link;
         } else {
             throw new IllegalArgumentException("There is no Node with that exponent or degree.");
