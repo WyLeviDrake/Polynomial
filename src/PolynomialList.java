@@ -41,7 +41,9 @@ public class PolynomialList {
             findDegreeHome(degree);
             if (isDegreeEqual(degree)) {
                 addToCoefficient(coefficient);
-            } else if (isStartOfList()) {
+            } else if (isDegreeEqualToNext(degree)) {
+                addToNextCoefficient(coefficient);
+            } else if (isStartOfList() && isDegreeMoreThanCurrent(degree)) {
                 addNodeToStartOfList(coefficient, degree);
             } else {
                 addNodeAfterCursor(coefficient, degree);
@@ -55,6 +57,9 @@ public class PolynomialList {
     private void addToCoefficient(double coefficient) {
         cursor.coefficient = cursor.coefficient + coefficient;
     }
+    private void addToNextCoefficient(double coefficient) {
+        cursor.link.coefficient = cursor.link.coefficient + coefficient;
+    }
     private void addNodeToStartOfList(double coefficient, int degree) {
         Node start = new Node(coefficient, degree, head);
         head = start;
@@ -62,35 +67,24 @@ public class PolynomialList {
     private void findDegreeHome(int degree) {
         if (isStartOfList() && isDegreeEqual(degree)) {
             return;
-        } else if (isNotEndOfList() && isDegreeLessThanCurrent(degree)) {
+        } else if (isNotEndOfList() && isDegreeLessThanNext(degree)) {
             findDegreeFromCurrentCursor(degree);
         } else {
             findDegreeFromStart(degree);
         }
     }
     private void findDegreeFromCurrentCursor(int degree) {
-        while (isNotEndOfList() && isDegreeLessThanCurrent(degree)) {
+        while (isNotEndOfList() && isDegreeLessThanCurrent(degree) && isDegreeLessThanNext(degree)) {
             advanceCursor();
         }
     }
     private void findDegreeFromStart(int degree) {
         resetCursor();
-        while (isNotEndOfList() && isDegreeLessThanCurrent(degree)) {
+        while (isNotEndOfList() && isDegreeLessThanCurrent(degree) && isDegreeLessThanNext(degree)) {
             advanceCursor();
         }
     }
-    private void findDegreeBeforeHome(int degree) {
-        if (isNotEndOfList() && isDegreeEqualToNext(degree)) {
-            findDegreeBeforeHomeFromCurrentCursor(degree);
-        } else {
-            findDegreeBeforeHomeFromStart(degree);
-        }
-    }
-    private void findDegreeBeforeHomeFromCurrentCursor(int degree) {
-        while (isNotEndOfList() && !isDegreeEqualToNext(degree)) {
-            advanceCursor();
-        }
-    }
+
     private void findDegreeBeforeHomeFromStart(int degree) {
         resetCursor();
         while (isNotEndOfList() && !isDegreeEqualToNext(degree)) {
@@ -113,22 +107,25 @@ public class PolynomialList {
             return cursor.degree > degree;
         }
     }
-    private boolean isDegreeEqual(int degree) {
-        if (isCursorNull()) {
+    private boolean isDegreeMoreThanCurrent(int degree) {
+        return cursor.degree < degree;
+    }
+    private boolean isDegreeLessThanNext(int degree) {
+        if (isNextNull()) {
             return false;
         } else {
-            return degree == cursor.degree;
+            return cursor.link.degree > degree;
         }
     }
+    private boolean isDegreeEqual(int degree) {
+            return degree == cursor.degree;
+    }
     private boolean isDegreeEqualToNext(int degree) {
-        if (isCursorNull()) {
+        if (isNextNull()) {
             return false;
         } else {
             return degree == cursor.link.degree;
         }
-    }
-    private boolean isCursorNull() {
-        return cursor == null;
     }
     private boolean isStartOfList() {
         return cursor == head;
@@ -141,18 +138,19 @@ public class PolynomialList {
     }
 
     public void removeNode(int degree) {
-        findDegreeBeforeHome(degree);
+        findDegreeBeforeHomeFromStart(degree);
         if (isNotEndOfList() && isDegreeEqualToNext(degree)) {
             cursor.link = cursor.link.link;
         } else {
             throw new IllegalArgumentException("There is no Node with that exponent or degree.");
         }
     }
-    public double evaluate(Node target, double x){
+    public double evaluate(int x){
         double answer = 0;
-        while (target.getLink() != null) {
-            answer = answer + (target.coefficient * Math.pow(x, target.degree));
-            target.link = target.getLink();
+        resetCursor();
+        while (cursor != null) {
+            answer = answer + (cursor.coefficient * Math.pow(x, cursor.degree));
+            advanceCursor();
         }
         return answer;
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="21b92f75-3f58-4fe8-a396-127920040995" name="Changes" comment="Continued debugging of addNode Method.">
+    <list default="true" id="21b92f75-3f58-4fe8-a396-127920040995" name="Changes" comment="Refactored removeNode and it passed tests.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PolynomialList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PolynomialList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/PolynomialListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/PolynomialListTest.java" afterDir="false" />
@@ -47,7 +47,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propDebugger&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.PolynomialListTest.removeNode_removesCorrectNode_givenNodeExists">
+  <component name="RunManager" selected="JUnit.PolynomialListTest.evaluate_returnsCorrectAnswer_givenExistingPolynomialList">
     <configuration name="PolynomialListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="polynomial" />
       <option name="PACKAGE_NAME" value="" />
@@ -57,21 +57,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PolynomialListTest.addNode_addsANodeAtHeadReference_givenNextNodeHasALowerDegree" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PolynomialListTest.evaluate_returnsCorrectAnswer_givenExistingPolynomialList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="polynomial" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="PolynomialListTest" />
-      <option name="METHOD_NAME" value="addNode_addsANodeAtHeadReference_givenNextNodeHasALowerDegree" />
+      <option name="METHOD_NAME" value="evaluate_returnsCorrectAnswer_givenExistingPolynomialList" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PolynomialListTest.addNode_addsCoefficients_givenTheInputDegreeAlreadyExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PolynomialListTest.removeNode_removesCorrectNode_givenCursorAtStart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="polynomial" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="PolynomialListTest" />
-      <option name="METHOD_NAME" value="addNode_addsCoefficients_givenTheInputDegreeAlreadyExists" />
+      <option name="METHOD_NAME" value="removeNode_removesCorrectNode_givenCursorAtStart" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -87,12 +87,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PolynomialListTest.removeNode_throwsException_givenNodeDoesNotExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="polynomial" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PolynomialListTest" />
+      <option name="METHOD_NAME" value="removeNode_throwsException_givenNodeDoesNotExist" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PolynomialListTest.removeNode_removesCorrectNode_givenNodeExists" />
-        <item itemvalue="JUnit.PolynomialListTest.addNode_addsCoefficients_givenTheInputDegreeAlreadyExists" />
-        <item itemvalue="JUnit.PolynomialListTest.addNode_addsANodeAtHeadReference_givenNextNodeHasALowerDegree" />
+        <item itemvalue="JUnit.PolynomialListTest.evaluate_returnsCorrectAnswer_givenExistingPolynomialList" />
         <item itemvalue="JUnit.PolynomialListTest" />
+        <item itemvalue="JUnit.PolynomialListTest.removeNode_removesCorrectNode_givenNodeExists" />
+        <item itemvalue="JUnit.PolynomialListTest.removeNode_removesCorrectNode_givenCursorAtStart" />
+        <item itemvalue="JUnit.PolynomialListTest.removeNode_throwsException_givenNodeDoesNotExist" />
       </list>
     </recent_temporary>
   </component>
@@ -175,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654905190020</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Refactored removeNode and it passed tests.">
+      <created>1654916371575</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1654916371575</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -200,23 +218,18 @@
     <MESSAGE value="Refactored addNode." />
     <MESSAGE value="Started Debugging. Continued testing." />
     <MESSAGE value="Continued debugging of addNode Method." />
-    <option name="LAST_COMMIT_MESSAGE" value="Continued debugging of addNode Method." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/PolynomialListTest.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Refactored removeNode and it passed tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored removeNode and it passed tests." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/polynomial$PolynomialListTest_addNode_usesCurrentCursorPositionToFindNodeHome_givenCursorIsAtStartPosition.ic" NAME="PolynomialListTest.addNode_usesCurrentCursorPositionToFindNodeHome_givenCursorIsAtStartPosition Coverage Results" MODIFIED="1656555025053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/polynomial$PolynomialListTest_removeNode_throwsException_givenNodeDoesNotExist.ic" NAME="PolynomialListTest.removeNode_throwsException_givenNodeDoesNotExist Coverage Results" MODIFIED="1656609716254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/polynomial$PolynomialListTest_addNode_addsANodeAtHeadReference_givenNextNodeHasALowerDegree.ic" NAME="PolynomialListTest.addNode_addsANodeAtHeadReference_givenNextNodeHasALowerDegree Coverage Results" MODIFIED="1654904063048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/polynomial$PolynomialListTest_removeNode_removesCorrectNode_givenCursorAtStart.ic" NAME="PolynomialListTest.removeNode_removesCorrectNode_givenCursorAtStart Coverage Results" MODIFIED="1656611354183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/polynomial$PolynomialListTest_addNode_addsCoefficients_givenTheInputDegreeAlreadyExists.ic" NAME="PolynomialListTest.addNode_addsCoefficients_givenTheInputDegreeAlreadyExists Coverage Results" MODIFIED="1654905015722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/polynomial$PolynomialListTest.ic" NAME="PolynomialListTest Coverage Results" MODIFIED="1653695108748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/polynomial$PolynomialListTest_removeNode_removesCorrectNode_givenNodeExists.ic" NAME="PolynomialListTest.removeNode_removesCorrectNode_givenNodeExists Coverage Results" MODIFIED="1654915872354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/polynomial$PolynomialListTest.ic" NAME="PolynomialListTest Coverage Results" MODIFIED="1656638292920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/polynomial$PolynomialListTest_removeNode_removesCorrectNode_givenNodeExists.ic" NAME="PolynomialListTest.removeNode_removesCorrectNode_givenNodeExists Coverage Results" MODIFIED="1656638268325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/polynomial$PolynomialListTest_evaluate_returnsCorrectAnswer_givenExistingPolynomialList.ic" NAME="PolynomialListTest.evaluate_returnsCorrectAnswer_givenExistingPolynomialList Coverage Results" MODIFIED="1656639269159" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/polynomial$PolynomialListTest_addNode_addsANodeInTheOrderItBelongs_givenAnExistingPolynomialList.ic" NAME="PolynomialListTest.addNode_addsANodeInTheOrderItBelongs_givenAnExistingPolynomialList Coverage Results" MODIFIED="1656542444391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
